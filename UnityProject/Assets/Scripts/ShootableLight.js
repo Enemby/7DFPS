@@ -1,12 +1,11 @@
 #pragma strict
-
+//took slight optimizations from pandemonia https://forums.wolfire.com/viewtopic.php?f=17&t=17646&p=199541&hilit=light+fix+code#p199541
 var destroy_effect : GameObject;
 var light_color = Color(1,1,1);
 var destroyed = false;
 enum LightType {AIRPLANE_BLINK, NORMAL, FLICKER}
 public var light_type = LightType.NORMAL;
 private var blink_delay = 0.0;
-
 private var light_amount = 1.0;
 
 function WasShot(obj : GameObject, pos : Vector3, vel : Vector3) {
@@ -15,13 +14,32 @@ function WasShot(obj : GameObject, pos : Vector3, vel : Vector3) {
 		light_amount = 0.0;
 		Instantiate(destroy_effect, transform.FindChild("bulb").position, Quaternion.identity);
 	}
-	if(obj && obj.GetComponent.<Collider>() && obj.GetComponent.<Collider>().material.name == "glass (Instance)"){
+	if(obj && obj.GetComponent(Collider) && obj.GetComponent(Collider).material.name == "glass (Instance)"){
 		GameObject.Destroy(obj);
+	}
+		var combined_color = Color(light_color.r * light_amount,light_color.g * light_amount,light_color.b * light_amount);
+	for(var light : Light in gameObject.GetComponentsInChildren(Light)){
+		light.color = combined_color;
+	}
+	for(var renderer : MeshRenderer in gameObject.GetComponentsInChildren(MeshRenderer)){
+		renderer.material.SetColor("_Illum", combined_color);
+		if(renderer.gameObject.name == "shade"){
+			renderer.material.SetColor("_Illum", combined_color * 0.5);
+		}
 	}
 }
 
 function Start () {
-	
+		var combined_color = Color(light_color.r * light_amount,light_color.g * light_amount,light_color.b * light_amount);
+	for(var light : Light in gameObject.GetComponentsInChildren(Light)){
+		light.color = combined_color;
+	}
+	for(var renderer : MeshRenderer in gameObject.GetComponentsInChildren(MeshRenderer)){
+		renderer.material.SetColor("_Illum", combined_color);
+		if(renderer.gameObject.name == "shade"){
+			renderer.material.SetColor("_Illum", combined_color * 0.5);
+		}
+	}
 }
 
 function Update () {
@@ -38,17 +56,6 @@ function Update () {
 				}
 				blink_delay -= Time.deltaTime;
 				break;
-		}
-	}
-
-	var combined_color = Color(light_color.r * light_amount,light_color.g * light_amount,light_color.b * light_amount);
-	for(var light : Light in gameObject.GetComponentsInChildren(Light)){
-		light.color = combined_color;
-	}
-	for(var renderer : MeshRenderer in gameObject.GetComponentsInChildren(MeshRenderer)){
-		renderer.material.SetColor("_Illum", combined_color);
-		if(renderer.gameObject.name == "shade"){
-			renderer.material.SetColor("_Illum", combined_color * 0.5);
 		}
 	}
 }

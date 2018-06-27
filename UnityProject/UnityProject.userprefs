@@ -1,19 +1,15 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\AimScript.js">
+  <MonoDevelop.Ide.Workspace />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\CharacterMotor.js">
     <Files>
-      <File FileName="Assets\Scripts\GUISkinHolder.js" Line="22" Column="2" />
-      <File FileName="Assets\Scripts\GunScript.js" Line="156" Column="25" />
-      <File FileName="Assets\Scripts\LevelCreatorScript.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\AimScript.js" Line="62" Column="31" />
-      <File FileName="Assets\Scripts\FlashlightScript.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\BulletPileScript.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\optionsmenuscript.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\RobotScript.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\tapescript.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\WeaponHolder.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\mag_script.js" Line="108" Column="12" />
+      <File FileName="Assets\Scripts\ObjectSpawner.js" Line="11" Column="49" />
+      <File FileName="Assets\Standard Assets\Character Controllers\Sources\Scripts\ThirdPersonController.js" Line="193" Column="126" />
+      <File FileName="Assets\Scripts\RobotScript.js" Line="33" Column="42" />
       <File FileName="Assets\Scripts\MusicScript.js" Line="1" Column="1" />
+      <File FileName="Assets\win_screen\slideshow.js" Line="44" Column="32" />
+      <File FileName="Assets\Scripts\CharacterMotor.js" Line="433" Column="21" />
+      <File FileName="Assets\Scripts\mag_script.js" Line="101" Column="19" />
+      <File FileName="Assets\Scripts\AimScript.js" Line="66" Column="13" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
