@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\LevelCreatorScript.js" />
      <Compile Include="Assets\Scripts\LevelScript.js" />
      <Compile Include="Assets\Scripts\MusicScript.js" />
+     <Compile Include="Assets\Scripts\ObjectSpawner.js" />
      <Compile Include="Assets\Scripts\PlatformInputController.js" />
      <Compile Include="Assets\Scripts\RobotScript.js" />
      <Compile Include="Assets\Scripts\ShellCasingScript.js" />
@@ -115,6 +116,7 @@
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_BloomAndFlares\MultiPassHollywoodFlares.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\BlurEffectConeTaps.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_Antialiasing\DLAA.shader" />
+     <None Include="Assets\UnityVC\Readme.txt" />
      <None Include="Assets\UnityVC\UnityVC.cginc" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\_DepthOfField\SeparableBlur.shader" />
      <None Include="Assets\Standard Assets\Image Effects (Pro Only)\_Sources\Shaders\ColorCorrectionEffect.shader" />

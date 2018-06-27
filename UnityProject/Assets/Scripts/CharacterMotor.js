@@ -431,7 +431,7 @@ private function ApplyInputVelocityChange (velocity : Vector3) {
 		step_volume = Mathf.Clamp(step_volume, 0.0,1.0);
 		head_bob = (Mathf.Sin(step_timer * Mathf.PI) * 0.1 - 0.05) * movement.velocity.magnitude * 0.5;
 		if(running > 0.0){
-			head_bob *= 2.0;
+			head_bob *= 2;
 		}
 		if(velocity.magnitude > 0.01){
 			var step_speed = movement.velocity.magnitude * 0.75;

@@ -29,8 +29,8 @@ var robot_type : RobotType;
 
 private var gun_delay = 0.0;
 private var alive = true;
-private var rotation_x = Spring(0.0,0.0,100.0,0.0001);
-private var rotation_y = Spring(0.0,0.0,100.0,0.0001);
+private var rotation_x = Spring(0.0,0.0,800.0,0.0001);
+private var rotation_y = Spring(0.0,0.0,800.0,0.0001);
 private var initial_turret_orientation : Quaternion;
 private var initial_turret_position : Vector3;
 private var gun_pivot : Transform;
@@ -205,7 +205,7 @@ function Start () {
 }
 
 function UpdateStationaryTurret() {
-	if(Vector3.Distance(GameObject.Find("Player").transform.position, transform.position) > kSleepDistance){
+	if(Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) > kSleepDistance){
 		GetTurretLightObject().GetComponent.<Light>().shadows = LightShadows.None;		
 		if(audiosource_motor.isPlaying){
 			audiosource_motor.Stop();
@@ -283,7 +283,7 @@ function UpdateStationaryTurret() {
 		}
 	}
 	var danger = 0.0;
-	var player = GameObject.Find("Player");
+	var player = GameObject.FindGameObjectWithTag("Player");
 	var dist = Vector3.Distance(player.transform.position, transform.position);
 	if(battery_alive){
 		danger += Mathf.Max(0.0, 1.0 - dist/kMaxRange);
@@ -366,7 +366,9 @@ function UpdateStationaryTurret() {
 				break;
 		}
 	}
-	player.GetComponent(MusicScript).AddDangerLevel(danger);
+	if(player != null){
+		player.GetComponent(MusicScript).AddDangerLevel(danger);
+	}
 	if(!camera_alive){
 		GetTurretLightObject().GetComponent.<Light>().intensity *= Mathf.Pow(0.01, Time.deltaTime);
 	}
@@ -389,7 +391,7 @@ function UpdateStationaryTurret() {
 }
 
 function UpdateDrone() {
-	if(Vector3.Distance(GameObject.Find("Player").transform.position, transform.position) > kSleepDistance){
+	if(Vector3.Distance(GameObject.FindGameObjectWithTag("Player").transform.position, transform.position) > kSleepDistance){
 		GetDroneLightObject().GetComponent.<Light>().shadows = LightShadows.None;
 		if(motor_alive){
 			distance_sleep = true;
@@ -488,8 +490,8 @@ function UpdateDrone() {
 		if(gun_delay <= 0.0){
 			gun_delay = 0.1;	
 			Instantiate(muzzle_flash, transform.FindChild("point_spark").position, RandomOrientation());
-			if(Vector3.Distance(transform.FindChild("point_spark").position, GameObject.Find("Player").transform.position) < 1){;
-				GameObject.Find("Player").GetComponent(AimScript).Shock();
+			if(Vector3.Distance(transform.FindChild("point_spark").position, GameObject.FindGameObjectWithTag("Player").transform.position) < 1){;
+				GameObject.FindGameObjectWithTag("Player").GetComponent(AimScript).Shock();
 			}
 		}
 	} else {
@@ -550,7 +552,7 @@ function UpdateDrone() {
 		}
 		var cam_pivot = transform.FindChild("camera_pivot");
 		cam_pivot.localEulerAngles.x = camera_pivot_angle;
-		var player = GameObject.Find("Player");
+		var player = GameObject.FindGameObjectWithTag("Player");
 		var dist = Vector3.Distance(player.transform.position, transform.position);
 		var danger = Mathf.Max(0.0, 1.0 - dist/kMaxRange);
 		if(danger > 0.0){
@@ -562,8 +564,7 @@ function UpdateDrone() {
 		if(ai_state == AIState.ALERT || ai_state == AIState.ALERT_COOLDOWN){
 			danger += 0.5;
 		}
-		player.GetComponent(MusicScript).AddDangerLevel(danger);
-		
+		//player.GetComponent(MusicScript).AddDangerLevel(danger);
 		var camera = transform.FindChild("camera_pivot").FindChild("camera");
 		rel_pos = player.transform.position - camera.position;
 		var sees_target = false;
