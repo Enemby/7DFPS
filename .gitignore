@@ -6,3 +6,4 @@ UnityProject/Library/ScriptAssemblies/*
 *.user
 *.pidb
 *.userprefs
+*.log
